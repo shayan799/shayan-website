@@ -29,7 +29,7 @@ yearElement.textContent = new Date().getFullYear();
 // Load profile content from Decap CMS
 async function loadProfile() {
     try {
-        const response = await fetch("./_data/profile.yml");
+        const response = await fetch("./data/profile.yml");
 
         if (!response.ok) {
             throw new Error("Could not load profile.yml");
