@@ -5,17 +5,19 @@
 
 const themeToggle = document.getElementById("theme-toggle");
 
-themeToggle.addEventListener("click", function () {
-    const currentTheme = document.body.getAttribute("data-theme");
+if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+        const currentTheme = document.body.getAttribute("data-theme");
 
-    if (currentTheme === "light") {
-        document.body.setAttribute("data-theme", "dark");
-        themeToggle.textContent = "☀";
-    } else {
-        document.body.setAttribute("data-theme", "light");
-        themeToggle.textContent = "☾";
-    }
-});
+        if (currentTheme === "light") {
+            document.body.setAttribute("data-theme", "dark");
+            themeToggle.textContent = "☀";
+        } else {
+            document.body.setAttribute("data-theme", "light");
+            themeToggle.textContent = "☾";
+        }
+    });
+}
 
 
 // ================================
@@ -24,19 +26,81 @@ themeToggle.addEventListener("click", function () {
 
 const yearElement = document.getElementById("year");
 
-yearElement.textContent = new Date().getFullYear();
+if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+}
 
-// Load profile content from Decap CMS
-async function loadProfile() {
+
+// ================================
+// LOAD YAML DATA
+// ================================
+
+async function loadData(file) {
+    const response = await fetch(`./data/${file}`);
+
+    if (!response.ok) {
+        throw new Error(`Could not load ${file}: ${response.status}`);
+    }
+
+    const yamlText = await response.text();
+    return jsyaml.load(yamlText);
+}
+
+
+// ================================
+// LOAD HOMEPAGE
+// ================================
+
+async function loadHome() {
     try {
-        const response = await fetch("./data/profile.yml");
+        const home = await loadData("home.yml");
 
-        if (!response.ok) {
-            throw new Error("Could not load profile.yml");
+        const eyebrow = document.querySelector("#home .eyebrow");
+        const heading = document.querySelector("#home h1");
+        const subtitle = document.querySelector("#home h2");
+        const description = document.querySelector("#home .hero-description");
+        const primaryButton = document.querySelector("#home .button.primary");
+        const secondaryButton = document.querySelector("#home .button.secondary");
+
+        if (eyebrow) {
+            eyebrow.textContent = home.eyebrow || "";
         }
 
-        const yamlText = await response.text();
-        const profile = jsyaml.load(yamlText);
+        if (heading) {
+            heading.textContent = home.heading || "";
+        }
+
+        if (subtitle) {
+            subtitle.textContent = home.subtitle || "";
+        }
+
+        if (description) {
+            description.textContent = home.description || "";
+        }
+
+        if (primaryButton && home.primary_button) {
+            primaryButton.textContent = home.primary_button.text || "";
+            primaryButton.href = home.primary_button.link || "#";
+        }
+
+        if (secondaryButton && home.secondary_button) {
+            secondaryButton.textContent = home.secondary_button.text || "";
+            secondaryButton.href = home.secondary_button.link || "#";
+        }
+
+    } catch (error) {
+        console.error("Homepage loading error:", error);
+    }
+}
+
+
+// ================================
+// LOAD ABOUT ME
+// ================================
+
+async function loadProfile() {
+    try {
+        const profile = await loadData("profile.yml");
 
         const introduction = document.getElementById("profile-introduction");
         const biography = document.getElementById("profile-biography");
@@ -65,4 +129,10 @@ async function loadProfile() {
     }
 }
 
+
+// ================================
+// START WEBSITE CONTENT LOADING
+// ================================
+
+loadHome();
 loadProfile();
