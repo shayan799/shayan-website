@@ -67,8 +67,21 @@ async function loadHome() {
         }
 
         if (heading) {
-            heading.textContent = home.heading || "";
+    const nameSpan = heading.querySelector("span");
+
+    if (nameSpan && home.heading) {
+        const parts = home.heading.split("Shayan Abdullah.");
+
+        if (parts.length === 2) {
+            heading.firstChild.textContent = parts[0];
+            nameSpan.textContent = "Shayan Abdullah.";
+        } else {
+            heading.textContent = home.heading;
         }
+    } else {
+        heading.textContent = home.heading || "";
+    }
+}
 
         if (subtitle) {
             subtitle.textContent = home.subtitle || "";
