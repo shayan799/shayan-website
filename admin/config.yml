@@ -13,7 +13,7 @@ collections:
     files:
       - name: "profile"
         label: "About Me"
-        file: "_data/profile.yml"
+        file: "data/profile.yml"
         fields:
           - { label: "Introduction", name: "introduction", widget: "text" }
           - { label: "Biography", name: "biography", widget: "markdown" }
