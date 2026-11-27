@@ -1,1 +1,20 @@
 
+backend:
+  name: turbo-github
+  turbo_site_id: 2f97a87c-f13f-41ab-a0ff-6b8508098426
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/shayan/images/uploads"
+
+collections:
+  - name: "pages"
+    label: "Website Content"
+    files:
+      - name: "profile"
+        label: "About Me"
+        file: "_data/profile.yml"
+        fields:
+          - { label: "Introduction", name: "introduction", widget: "text" }
+          - { label: "Biography", name: "biography", widget: "markdown" }
+          - { label: "Interests", name: "interests", widget: "list" }
