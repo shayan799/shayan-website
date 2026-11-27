@@ -11,6 +11,30 @@ collections:
   - name: "pages"
     label: "Website Content"
     files:
+
+      # HOMEPAGE
+      - name: "home"
+        label: "Homepage"
+        file: "data/home.yml"
+        fields:
+          - { label: "Eyebrow Text", name: "eyebrow", widget: "string" }
+          - { label: "Main Heading", name: "heading", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Primary Button"
+            name: "primary_button"
+            widget: "object"
+            fields:
+              - { label: "Button Text", name: "text", widget: "string" }
+              - { label: "Button Link", name: "link", widget: "string" }
+          - label: "Secondary Button"
+            name: "secondary_button"
+            widget: "object"
+            fields:
+              - { label: "Button Text", name: "text", widget: "string" }
+              - { label: "Button Link", name: "link", widget: "string" }
+
+      # ABOUT ME
       - name: "profile"
         label: "About Me"
         file: "data/profile.yml"
@@ -18,3 +42,103 @@ collections:
           - { label: "Introduction", name: "introduction", widget: "text" }
           - { label: "Biography", name: "biography", widget: "markdown" }
           - { label: "Interests", name: "interests", widget: "list" }
+
+      # INTERESTS
+      - name: "interests"
+        label: "Interests"
+        file: "data/interests.yml"
+        fields:
+          - label: "Interest Cards"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Icon or Emoji", name: "icon", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Visible", name: "visible", widget: "boolean", default: true }
+
+      # SKILLS
+      - name: "skills"
+        label: "Skills & Learning"
+        file: "data/skills.yml"
+        fields:
+          - label: "Skills"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Skill Name", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Category", name: "category", widget: "string", required: false }
+              - { label: "Learning Stage", name: "level", widget: "string", required: false }
+              - { label: "Visible", name: "visible", widget: "boolean", default: true }
+
+      # PHOTOGRAPHY AND CINEMATOGRAPHY
+      - name: "portfolio"
+        label: "Photography & Videos"
+        file: "data/portfolio.yml"
+        fields:
+          - label: "Photographs"
+            name: "photos"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Visible", name: "visible", widget: "boolean", default: true }
+
+          - label: "Videos"
+            name: "videos"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Video URL", name: "video_url", widget: "string" }
+              - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
+              - { label: "Visible", name: "visible", widget: "boolean", default: true }
+
+      # CONTACT
+      - name: "contact"
+        label: "Contact & Social Links"
+        file: "data/contact.yml"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Public Contact Email", name: "email", widget: "string", required: false }
+          - label: "Social Links"
+            name: "social_links"
+            widget: "list"
+            fields:
+              - { label: "Platform", name: "platform", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Visible", name: "visible", widget: "boolean", default: true }
+
+      # NAVIGATION AND APPEARANCE
+      - name: "settings"
+        label: "Navigation & Appearance"
+        file: "data/settings.yml"
+        fields:
+          - { label: "Website Title", name: "site_title", widget: "string" }
+          - label: "Default Theme"
+            name: "default_theme"
+            widget: "select"
+            options:
+              - { label: "Dark", value: "dark" }
+              - { label: "Light", value: "light" }
+          - label: "Navigation Links"
+            name: "navigation"
+            widget: "list"
+            fields:
+              - { label: "Link Text", name: "label", widget: "string" }
+              - { label: "Section Link", name: "target", widget: "string" }
+              - { label: "Visible", name: "visible", widget: "boolean", default: true }
+          - label: "Section Order"
+            name: "section_order"
+            widget: "list"
+
+      # FOOTER
+      - name: "footer"
+        label: "Footer"
+        file: "data/footer.yml"
+        fields:
+          - { label: "Copyright Name", name: "copyright_name", widget: "string" }
+          - { label: "Footer Description", name: "description", widget: "string" }
