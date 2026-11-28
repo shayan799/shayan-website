@@ -67,21 +67,21 @@ async function loadHome() {
         }
 
         if (heading) {
-    const nameSpan = heading.querySelector("span");
+            const nameSpan = heading.querySelector("span");
 
-    if (nameSpan && home.heading) {
-        const parts = home.heading.split("Shayan Abdullah.");
+            if (nameSpan && home.heading) {
+                const parts = home.heading.split("Shayan Abdullah.");
 
-        if (parts.length === 2) {
-            heading.firstChild.textContent = parts[0];
-            nameSpan.textContent = "Shayan Abdullah.";
-        } else {
-            heading.textContent = home.heading;
+                if (parts.length === 2) {
+                    heading.firstChild.textContent = parts[0];
+                    nameSpan.textContent = "Shayan Abdullah.";
+                } else {
+                    heading.textContent = home.heading;
+                }
+            } else {
+                heading.textContent = home.heading || "";
+            }
         }
-    } else {
-        heading.textContent = home.heading || "";
-    }
-}
 
         if (subtitle) {
             subtitle.textContent = home.subtitle || "";
@@ -144,8 +144,50 @@ async function loadProfile() {
 
 
 // ================================
+// LOAD INTERESTS
+// ================================
+
+async function loadInterests() {
+    try {
+        const data = await loadData("interests.yml");
+        const container = document.getElementById("interests-container");
+
+        if (!container || !data || !Array.isArray(data.items)) {
+            return;
+        }
+
+        container.replaceChildren();
+
+        data.items.forEach((interest) => {
+            if (interest.visible === false) return;
+
+            const card = document.createElement("article");
+            card.className = "interest-card";
+
+            const icon = document.createElement("div");
+            icon.className = "card-icon";
+            icon.textContent = interest.icon || "";
+
+            const title = document.createElement("h3");
+            title.textContent = interest.title || "";
+
+            const description = document.createElement("p");
+            description.textContent = interest.description || "";
+
+            card.append(icon, title, description);
+            container.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error("Interests loading error:", error);
+    }
+}
+
+
+// ================================
 // START WEBSITE CONTENT LOADING
 // ================================
 
 loadHome();
 loadProfile();
+loadInterests();
