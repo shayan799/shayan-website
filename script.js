@@ -147,6 +147,7 @@ async function loadProfile() {
 // LOAD INTERESTS
 // ================================
 
+
 async function loadInterests() {
     try {
         const data = await loadData("interests.yml");
@@ -164,17 +165,15 @@ async function loadInterests() {
             const card = document.createElement("article");
             card.className = "interest-card";
 
-            const icon = document.createElement("div");
-            icon.className = "card-icon";
-            icon.textContent = interest.icon || "";
+            if (interest.cover) {
+                card.style.backgroundImage = `url("${interest.cover}")`;
+            }
 
             const title = document.createElement("h3");
+            title.className = "interest-card-title";
             title.textContent = interest.title || "";
 
-            const description = document.createElement("p");
-            description.textContent = interest.description || "";
-
-            card.append(icon, title, description);
+            card.appendChild(title);
             container.appendChild(card);
         });
 
