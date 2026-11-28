@@ -218,7 +218,10 @@ header {
     margin-top: 35px;
 }
 
-/* Interest card cover design */
+/* =================================
+   INTEREST CARDS
+================================= */
+
 .interest-card {
     position: relative;
     min-height: 320px;
@@ -236,7 +239,7 @@ header {
     transition: transform 0.3s ease;
 }
 
-/* Dark gradient for heading readability */
+/* Dark gradient overlay */
 .interest-card::before {
     content: "";
     position: absolute;
@@ -249,19 +252,68 @@ header {
     z-index: -1;
 }
 
-/* Heading over the photo */
+/* Card hover */
+.interest-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Text container */
+.interest-card-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+/* Optional upper text */
+.interest-card-upper {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+/* Main heading */
 .interest-card-title {
     color: #ffffff;
     font-size: 1.6rem;
     font-weight: 600;
     margin: 0;
-    position: relative;
-    z-index: 1;
 }
 
-/* Interest card hover effect */
-.interest-card:hover {
-    transform: translateY(-5px);
+/* Card logo */
+.interest-card-logo {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    z-index: 2;
+    padding: 8px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+}
+
+/* Logo positions */
+.logo-top-left {
+    top: 20px;
+    left: 20px;
+}
+
+.logo-top-right {
+    top: 20px;
+    right: 20px;
+}
+
+.logo-bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+
+.logo-bottom-right {
+    bottom: 20px;
+    right: 20px;
 }
 
 /* Contact section */
