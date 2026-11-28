@@ -1,0 +1,9 @@
+items:
+  - show_logo: true
+    logo_position: top-right
+    visible: true
+    title: Photography
+    cover: /shayan/images/uploads/screenshot-2024-07-01-220248.png
+    upper_text: THROUGH MY LENS
+    logo: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ3PkuHKUUabqH1LSZv86eDQQyY1NoOXRDDkDJZQto7w&s=10
+    description: Capturing moments and perspectives
