@@ -53,10 +53,23 @@ collections:
             widget: "list"
             fields:
               - { label: "Title", name: "title", widget: "string" }
-- { label: "Cover Image", name: "cover", widget: "image" }
-- { label: "Icon or Emoji", name: "icon", widget: "string", required: false }
-- { label: "Description", name: "description", widget: "text" }
-- { label: "Visible", name: "visible", widget: "boolean", default: true }
+              - { label: "Cover Image", name: "cover", widget: "image" }
+              - { label: "Upper Text", name: "upper_text", widget: "string", required: false }
+              - { label: "Logo", name: "logo", widget: "image", required: false }
+              - { label: "Show Logo", name: "show_logo", widget: "boolean", default: false }
+              - label: "Logo Position"
+                name: "logo_position"
+                widget: "select"
+                options:
+                  - { label: "Top Left", value: "top-left" }
+                  - { label: "Top Right", value: "top-right" }
+                  - { label: "Bottom Left", value: "bottom-left" }
+                  - { label: "Bottom Right", value: "bottom-right" }
+                default: "top-right"
+              - { label: "Icon or Emoji", name: "icon", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Visible", name: "visible", widget: "boolean", default: true }
+
       # SKILLS
       - name: "skills"
         label: "Skills & Learning"
