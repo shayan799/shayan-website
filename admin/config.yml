@@ -53,10 +53,10 @@ collections:
             widget: "list"
             fields:
               - { label: "Title", name: "title", widget: "string" }
-              - { label: "Icon or Emoji", name: "icon", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Visible", name: "visible", widget: "boolean", default: true }
-
+- { label: "Cover Image", name: "cover", widget: "image" }
+- { label: "Icon or Emoji", name: "icon", widget: "string", required: false }
+- { label: "Description", name: "description", widget: "text" }
+- { label: "Visible", name: "visible", widget: "boolean", default: true }
       # SKILLS
       - name: "skills"
         label: "Skills & Learning"
